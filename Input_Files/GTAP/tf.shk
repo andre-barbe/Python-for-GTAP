@@ -1,0 +1,404 @@
+ 
+ ! This file was created at 19:14:03 on 25-JUN-2017 by the program
+ !  <SHOCKSv7.for 25-JUN-2017> [SHOCKSv7.tab,SHOCKSv7.STI]
+ ! which accesses some of the routines in the GEMPACK software release
+ !  <GEMPACK Release 11.4.003   January 2016>
+ 
+ !     -------------------------------------------------------                
+ !    !            GEMPACK Software System Licence            !               
+ !    !  Source Code Licence for the GEMPACK Software System  !               
+ !    !                 Licence No.  GFM-0048                 !               
+ !    !          Licence for Release 11.4 of GEMPACK          !               
+ !    !           Center for Global Trade Analysis            !               
+ !    !         Department of Agricultural Economics          !               
+ !    !                   Krannert Building                   !               
+ !    !                   Purdue University                   !               
+ !    !                    West Lafayette,                    !               
+ !    !                   Indiana IN 47907                    !               
+ !    !                          USA                          !               
+ !     -------------------------------------------------------                
+    
+ 
+ !
+ ! Values of TFE_HAT(ENDW,ACTS,REG) - an array of size 5x10x10
+ !---------------------------------
+ !
+ 
+ ! (Entries are written one "row" at a time - maximum of 4 per line.)
+ 
+ 
+ 5 10 10  real row_order;
+ 
+ ! (This array is shown as 10 matrices - each of size 5x10.)
+ 
+ ! The matrix TFE_HAT(%1,%2,"Oceania") with %1 in ENDW and %2 in ACTS. +++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -1.3857310     -0.45342150       0.0000000       0.0000000     !%1=Land
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.53799021     -0.39501888      -4.0666480      -3.7477484     !%1=UnSkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -3.6793919      -3.7979620      -3.8668885      -3.9057400
+ !%2= a_TransComm    a_OthService
+  -3.9563608      -3.8549447
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.52494544     -0.15103620      -4.0873351      -3.7151017     !%1=SkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -3.6409767      -3.7713659      -3.8396912      -3.8802941
+ !%2= a_TransComm    a_OthService
+  -3.8126330      -3.8873093
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.79930711      0.49829790      -2.8779075      -2.4318960     !%1=Capital
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -2.6361318      -2.6169620      -2.5600185      -2.3852668
+ !%2= a_TransComm    a_OthService
+  -2.5062718      -2.5423248
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000      -2.8247249       0.0000000     !%1=NatRes
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFE_HAT(%1,%2,"EastAsia") with %1 in ENDW and %2 in ACTS. ++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   23.774488      0.80563557       0.0000000       0.0000000     !%1=Land
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.87713939      0.28848183     -0.76013315      -5.7820663     !%1=UnSkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -2.2629361      -5.9847131      -4.6847439      -6.0573077
+ !%2= a_TransComm    a_OthService
+  -8.5221663      -7.5019751
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.69891119      -1.4354508      -1.6227320      -9.5149155     !%1=SkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -5.5183086      -9.1600790      -7.8796101      -8.4902325
+ !%2= a_TransComm    a_OthService
+  -12.162019      -9.4662628
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   13.261061       4.5915194     -0.34271637      -1.2828534     !%1=Capital
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.31757507     -0.69138080     -0.71841377      -1.1379042
+ !%2= a_TransComm    a_OthService
+  -1.3899274      -1.8777102
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000     -0.23129012       0.0000000     !%1=NatRes
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFE_HAT(%1,%2,"SEAsia") with %1 in ENDW and %2 in ACTS. ++++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.68163359     -0.71545261       0.0000000       0.0000000     !%1=Land
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -1.3422619      -1.1759772      -1.4302853      -1.4451896     !%1=UnSkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.4971975      -1.4452127      -1.3874004      -1.3773139
+ !%2= a_TransComm    a_OthService
+  -1.4579594      -1.3063606
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.83167446     -0.79043758      -1.2883013      -1.2001172     !%1=SkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.3454179      -1.2452928      -1.1660804      -1.2083901
+ !%2= a_TransComm    a_OthService
+  -1.0973182      -1.2394097
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.20977063     -0.30483970     -0.60114884     -0.54202330     !%1=Capital
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.56046265     -0.51554310     -0.58306628     -0.58075690
+ !%2= a_TransComm    a_OthService
+ -0.54447597     -0.59747398
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000     -0.61433846       0.0000000     !%1=NatRes
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFE_HAT(%1,%2,"SouthAsia") with %1 in ENDW and %2 in ACTS. +++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.19642794     -0.12580998       0.0000000       0.0000000     !%1=Land
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.25037861     -0.19032426     -0.16701889     -0.12267067     !%1=UnSkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.54105633     -0.10804173     -8.56499746E-02 -0.13380006
+ !%2= a_TransComm    a_OthService
+ -0.36212915     -0.26924640
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.20655556     -0.23560910     -0.34967744     -0.17399263     !%1=SkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.84149772     -0.15893906     -0.10709011     -0.11602277
+ !%2= a_TransComm    a_OthService
+ -0.25622588     -0.19287744
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.22583152     -0.12924634     -0.30184197     -0.18122672     !%1=Capital
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.48649892     -0.11972144     -9.95002612E-02 -0.41551074
+ !%2= a_TransComm    a_OthService
+ -0.14795791     -0.14533110
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000     -0.28792924       0.0000000     !%1=NatRes
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFE_HAT(%1,%2,"NAmerica") with %1 in ENDW and %2 in ACTS. ++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   23.782387       3.1026194       0.0000000       0.0000000     !%1=Land
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.33265191      -10.789678      -12.540582      -12.255074     !%1=UnSkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -12.706633      -12.855510      -12.627768      -12.865431
+ !%2= a_TransComm    a_OthService
+  -12.795510      -12.929934
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -2.7680242      -9.5815878      -12.922929      -12.977182     !%1=SkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -13.070897      -13.121962      -13.055418      -13.059608
+ !%2= a_TransComm    a_OthService
+  -13.069762      -12.962682
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.8160553       1.9971287      -3.1175008      -2.5561361     !%1=Capital
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -2.7078724      -2.7852082      -2.7350030      -2.8999534
+ !%2= a_TransComm    a_OthService
+  -2.7085831      -2.9582067
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000      -3.1797626       0.0000000     !%1=NatRes
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFE_HAT(%1,%2,"LatinAmer") with %1 in ENDW and %2 in ACTS. +++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -1.1922852      -1.1521165       0.0000000       0.0000000     !%1=Land
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -11.198001      -11.968204      -11.362394      -10.727104     !%1=UnSkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -12.176916      -12.957010      -13.033857      -14.441647
+ !%2= a_TransComm    a_OthService
+  -14.843790      -15.478878
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -10.061625      -13.770638      -9.4429245      -14.117514     !%1=SkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -15.895315      -16.219900      -16.055368      -10.837251
+ !%2= a_TransComm    a_OthService
+  -16.563517      -14.536712
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.74051762      0.36110869     -0.87307614      -1.0233570     !%1=Capital
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.1355739      -1.1828339      -1.0038155      -1.1569386
+ !%2= a_TransComm    a_OthService
+  -1.2775440      -1.1817048
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000     -0.94843149       0.0000000     !%1=NatRes
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFE_HAT(%1,%2,"EU_28") with %1 in ENDW and %2 in ACTS. +++++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   62.719208       58.789291       0.0000000       0.0000000     !%1=Land
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -11.530613      -17.504765      -27.809174      -28.264685     !%1=UnSkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -26.852137      -28.877029      -28.796677      -28.753002
+ !%2= a_TransComm    a_OthService
+  -25.398256      -28.186787
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -12.614326      -18.159754      -26.507114      -27.542309     !%1=SkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -27.018351      -28.336134      -28.315075      -27.916704
+ !%2= a_TransComm    a_OthService
+  -26.555754      -28.012726
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   39.156609       17.387711      -2.5746737      -2.0242074     !%1=Capital
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.6019491      -1.7859656      -1.6832534      -1.9473404
+ !%2= a_TransComm    a_OthService
+  -2.0843618      -1.9353734
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000      -2.4456141       0.0000000     !%1=NatRes
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFE_HAT(%1,%2,"MENA") with %1 in ENDW and %2 in ACTS. ++++++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   3.0329065     -0.93260443       0.0000000       0.0000000     !%1=Land
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -7.8572583      -10.713060      -18.863199      -11.273602     !%1=UnSkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -7.7458305      -15.863766      -15.990476      -13.861697
+ !%2= a_TransComm    a_OthService
+  -9.9971657      -10.282114
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -6.0835490      -6.5779481      -21.992373      -8.6721621     !%1=SkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -5.2688303      -13.344542      -13.508787      -14.120220
+ !%2= a_TransComm    a_OthService
+  -8.2252264      -10.162875
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.65410995       5.3054905     -0.97935742     -0.87621534     !%1=Capital
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.90222293      -1.1661036      -1.3318760      -1.1337445
+ !%2= a_TransComm    a_OthService
+ -0.93620783      -1.2009900
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000      -1.0910909       0.0000000     !%1=NatRes
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFE_HAT(%1,%2,"SSA") with %1 in ENDW and %2 in ACTS. +++++++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -1.6193399      -1.5091213       0.0000000       0.0000000     !%1=Land
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -10.578935      -8.8614111      -9.5836344      -3.7293785     !%1=UnSkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -4.0586495      -4.2562151      -3.7742138      -4.2690535
+ !%2= a_TransComm    a_OthService
+  -7.0452652      -5.4973402
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -7.9156809      -12.370996      -9.5297966      -6.0534258     !%1=SkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -6.8877945      -6.4000101      -4.4315786      -4.5937920
+ !%2= a_TransComm    a_OthService
+  -8.9514589      -6.3725452
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -1.4473315      -1.2814825      -1.6560978      -1.5239902     !%1=Capital
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.4343853      -1.6123705      -1.6494333      -1.5666871
+ !%2= a_TransComm    a_OthService
+  -1.4773798      -1.5629678
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000      -1.7229226       0.0000000     !%1=NatRes
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFE_HAT(%1,%2,"RestofWorld")
+ !  with %1 in ENDW and %2 in ACTS. ++++++++++++++++++++++++++++++++++++++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.8663951       6.0618463       0.0000000       0.0000000     !%1=Land
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -18.962557      -17.125919      -18.711391      -19.643560     !%1=UnSkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -19.971754      -20.349426      -20.035940      -20.284658
+ !%2= a_TransComm    a_OthService
+  -19.552813      -20.473484
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -17.013378      -18.668692      -21.109095      -20.782312     !%1=SkLab
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -21.049026      -20.952221      -21.074854      -20.851683
+ !%2= a_TransComm    a_OthService
+  -20.083233      -20.437233
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   7.4269233       9.8490658      -1.7617544      -1.9483145     !%1=Capital
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.7667587      -1.8689522      -2.1320782      -1.8065789
+ !%2= a_TransComm    a_OthService
+  -1.9488647      -2.0111146
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000      -1.7614437       0.0000000     !%1=NatRes
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 

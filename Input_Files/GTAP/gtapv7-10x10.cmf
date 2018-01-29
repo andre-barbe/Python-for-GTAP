@@ -1,0 +1,135 @@
+! This CMF file is used for running the GTAP model outside of RunGTAP !
+auxiliary files = gtapv7;           
+check-on-read elements = warn; 
+cpu=yes ; 
+log file = yes;  
+start with MMNZ = 200000000;
+!Equations file = gtapv7-eqns;
+
+! Input files: 
+File GTAPSETS = SETS.har; 
+File GTAPDATA = BASEDATA.har;
+File GTAPPARM = Default.prm;
+
+! Updated files:
+Updated File GTAPDATA = <CMF>.UPD;
+! Output files:
+File GTAPVOL = GTAPVOL-<CMF>.har; ! HAR file of volume changes
+File WELVIEW = WELVIEW-<CMF>.har; ! HAR file of volume changes
+File GTAPSUM = SUMMARY-<CMF>.har; ! Summary/Diagnostics file
+
+!Method = johansen;
+Method = Gragg;
+Steps = 3 5 7;
+automatic accuracy = yes;
+subintervals = 5;
+accuracy figures = 5;
+accuracy percent = 90;
+Equations file = gtapv7;
+
+Exogenous
+          pop
+          psaveslack pfactwld
+          profitslack incomeslack endwslack
+          cgdslack 
+          tradslack
+          ams atm atf ats atd
+          aosec aoreg avasec avareg
+          aintsec aintreg aintall
+          afcom afsec afreg afecom afesec afereg
+          aoall afall afeall
+          au dppriv dpgov dpsave
+          to tinc 
+          tp tm tms tx txs
+          qe
+          qesf
+;
+Rest endogenous;
+Verbal Description = Test shocks;
+
+!====================
+!       Shocks      
+!====================
+ 
+!------------------------
+! (A) Nominal homogeneity
+!------------------------
+!Shock pfactwld = 0;
+Shock pfactwld = 5;
+
+!--------------
+! (B) Endowment
+!--------------
+!Shock qe = uniform 5;
+!Shock qesf = uniform 1;
+
+!----------------
+! (C) Tech change  
+!----------------
+! Note: ao shocks in GTAPv7 is equivalent to   
+!           aoall(PROD_COMM,REG) 
+!           aosec(PROD_COMM) 
+!       in GTAPv6.2 since ACTS excludes "cgds" in GTAPv7  
+
+!   --------------
+!   (c1) ao shocks  
+!   --------------
+
+!   -----------
+!   (c11) aoreg  
+!   -----------
+!Shock aoreg = uniform 5;    !Output augmenting tech change 
+
+!   -----------
+!   (c12) aosec 
+!   -----------
+!Shock aosec= uniform 5;     !Output augmenting tech change
+
+!   -----------
+!   (c13) aoall 
+!   -----------
+!Shock aoall = uniform 5;    !Output augmenting tech change
+
+!   --------
+!   (c2) ava 
+!   --------
+!Shock avasec= uniform -5;
+
+!   --------------
+!   (c3) af shocks
+!   --------------
+!   -----------
+!   (c31) afall
+!   -----------
+!Shock afall = uniform 5;
+
+!   -----------
+!   (c32) afcom
+!   -----------
+!Shock afcom = uniform -10;
+
+!   --------------
+!   (c33) afreg
+!   --------------
+!Shock afreg = uniform -5;
+
+!   --------------
+!   (c4) aint shocks
+!   --------------
+!Shock aintall = uniform 5;
+
+!-----------------------------------------------
+! (D) Eliminate Output and endowment tax/subsidy 
+!-----------------------------------------------
+!Shock to   = file SHOCKS.har header "CTON";
+!Shock tinc = file SHOCKS.har header "CTEN";
+
+!-------------------------
+! (E) Eliminate Export tax 
+!-------------------------
+!Shock txs = file SHOCKS.har header "CTXN";
+
+!---------------------
+! (F) Eliminate Tariff  
+!---------------------
+!Shock tms = file SHOCKS.har header "CPTR";  
