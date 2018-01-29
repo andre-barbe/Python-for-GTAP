@@ -1,3 +1,0 @@
-#PARAMETERS
-vary ESUBM with ESUBD constant ratio ;
-vary RORFLEX = no ;

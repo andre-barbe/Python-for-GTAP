@@ -17,11 +17,16 @@ class CopyInputFiles(object):
             "gtapv7.tab",
             "gtapv7.gss",
             "gtapv7.gst",
-            "gtapv7.min"
+            "gtapv7.min",
+            "gtapv7.axs",
+            "gtapv7.axt",
+            "gtapv7.exe",
             # "gtap.cmf",
+            "GTAPv7-10x10.cmf"
         ]
 
         list_shocks_gemsim = [
+            "Shocks-10x10.har"
             # "shocks.tab",
             # "shocks.gss",
             # "shocks.gst",
@@ -30,11 +35,14 @@ class CopyInputFiles(object):
         ]
 
         list_gtap_data = [
-            "basedata.har",
-            "baserate.har",
-            "baseview.har",
-            "sets.har",
-            "default.prm"
+            "basedata-10x10.har",
+            #"basedata.har",
+            #"baserate.har",
+            #"baseview.har",
+            "sets-10x10.har",
+            #"sets.har",
+            "default-10x10.prm",
+            #"default.prm"
         ]
 
         list_shocks_data = [
@@ -48,4 +56,4 @@ class CopyInputFiles(object):
 
         for file_name in list_of_files_to_copy:
             # copy files with file_name from Input_Files to Work_Files
-            shutil.copy('Input_Files\\GTAP\\{0}'.format(file_name), 'Work_Files\\{0}'.format(file_name))
+            shutil.copy('Input_Files\\GTAP2\\{0}'.format(file_name), 'Work_Files\\{0}'.format(file_name))
