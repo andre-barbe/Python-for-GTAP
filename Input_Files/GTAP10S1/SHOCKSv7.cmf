@@ -1,0 +1,22 @@
+auxiliary files = shocks;
+check-on-read elements = warn;
+cpu=yes ;
+log file = yes; 
+
+! Input files:
+File GTAPSETS = SETS.har;     ! File with set specification
+File GTAPDATA = Basedata.har; ! File containing base data
+File TAXES    = TAXSHOCKS.har
+! Output files:
+!File SHOCKS = SHOCKS.har; ! shocks file
+File TOHAT = TOHAT.txt; ! The file with shocks to obtain TO = 1
+File TFHAT = TFHAT.txt; ! The file with shocks to obtain TFE = 1
+File TFDHAT = TFDHAT.txt; ! The file with shocks to obtain TFD = 1
+File TFIHAT = TFIHAT.txt; ! The file with shocks to obtain TFI = 1
+File TPDHAT = TPDHAT.txt; ! The file with shocks to obtain TPM = 1
+File TPIHAT = TPIHAT.txt; ! The file with shocks to obtain TPD = 1
+File TGDHAT = TGDHAT.txt; ! The file with shocks to obtain TGD = 1
+File TGIHAT = TGIHAT.txt; ! The file with shocks to obtain TGM = 1
+File TXSHAT = TXSHAT.txt; ! The file with shocks to obtain TXS = 1
+File TMSHAT = TMSHAT.txt; ! The file with shocks to obtain TMS = 1
+

@@ -1,0 +1,260 @@
+!___________________________start of GTAP.STI file_____________________
+!
+bat       ! This runs in batch mode
+
+gtap      ! file output .tab
+gtap      ! file output .inf
+c         ! choose condensation
+o         ! begin with ommitting the unnecessary policy variables
+tf
+tpm
+tpd
+tgm
+tgd
+tfm
+tfd
+atall     ! omit the four-dimensional shock to margins tech change
+! aoall   leave in for gtaptech version for chp11 and chp13
+avaall    ! omit the three-dimensional shock to value added tech change
+! afall   leave in for gtaptech version for chp11 and chp13
+! afeall  leave in for gtaptech version for chp11 and chp13
+
+b
+pfd
+DMNDDPRICE
+b
+compvalad
+compvaladeq
+b
+af
+AFWORLD   ! added JMH june 7 2000 to evade need for GEMPACK licence on CHP10
+b
+ao
+AOWORLD   ! added JMH june 7 2000 to evade need for GEMPACK licence on CHP10
+b
+ava
+AVAWORLD   ! added JMH june 7 2000 to evade need for GEMPACK licence on CHP10
+b
+afe
+AFEWORLD   ! added JMH june 7 2000 to evade need for GEMPACK licence on CHP10
+b
+ppm
+PHHIPRICES
+b
+pfm
+DMNDIPRICES
+b
+pms
+MKTPRICES
+b
+pfob
+EXPRICES
+b
+pcif
+FOBCIF
+b
+pf
+ICOMPRICE
+b
+ppd
+PHHDPRICE
+b
+pgm
+GHHIPRICES
+b
+pgd
+GHHDPRICE
+b
+qfm
+INDIMP
+!b     needed for geelas
+!qfd
+!INDDOM
+b
+pvaen
+VAPRICE
+!b          this has been suppressed by JMB Sept. 2001
+!qfe
+!ENDWDEMAND
+b
+qvaen
+VADEMAND
+b
+qf
+INTDEMAND
+b
+pgov
+GPRICEINDEX
+b
+qg
+GOVDMNDS
+b
+pg
+GCOMPRICE
+b
+qgm
+GHHLDAGRIMP
+!b    needed for GEELAS
+!qgd
+!GHHLDDOM
+b
+qp
+PRIVDMNDS
+!b   needed for geelas
+!qpd
+!PHHLDDOM
+b
+qpm
+PHHLDAGRIMP
+b           ! These are new backsolves associated with trade and transport
+qtmfsd
+QTRANS_MFSD
+b
+ptrans
+TRANSCOSTINDEX
+b
+atmfsd
+TRANSTECHANGE
+b           ! Backsolves and substitutions associated with welfare decomposition
+CNTqor
+CONT_EV_qor
+b
+CNTqoir
+CONT_EV_qoir
+b
+CNTqfer
+CONT_EV_qfer
+b
+CNTqfeir
+CONT_EV_qfeir
+! Summary variables not used in DECOMP have been commented out of GTAP.TAB
+!s
+!CNTqfejr
+!CONT_EV_qfejr
+b
+CNTqfeijr
+CONT_EV_qfeijr
+b
+CNTqfmr
+CONT_EV_qfmr
+b
+CNTqfmir
+CONT_EV_qfmir
+!s
+!CNTqfmjr
+!CONT_EV_qfmjr
+b
+CNTqfmijr
+CONT_EV_qfmijr
+b
+CNTqfdr
+CONT_EV_qfdr
+b
+CNTqfdir
+CONT_EV_qfdir
+!s
+!CNTqfdjr
+!CONT_EV_qfdjr
+b
+CNTqfdijr
+CONT_EV_qfdijr
+b
+CNTqpmr
+CONT_EV_qpmr
+b
+CNTqpmir
+CONT_EV_qpmir
+b
+CNTqpdr
+CONT_EV_qpdr
+b
+CNTqpdir
+CONT_EV_qpdir
+b
+CNTqgmr
+CONT_EV_qgmr
+b
+CNTqgmir
+CONT_EV_qgmir
+b
+CNTqgdr
+CONT_EV_qgdr
+b
+CNTqgdir
+CONT_EV_qgdir
+b
+CNTqxsr
+CONT_EV_qxsr
+!s
+!CNTqxsir
+!CONT_EV_qxsir
+!s
+!CNTqxsrs
+!CONT_EV_qxsrs
+b
+CNTqxsirs
+CONT_EV_qxsirs
+b
+CNTqimr
+CONT_EV_qimr
+!s
+!CNTqimir
+!CONT_EV_qimir
+!s
+!CNTqimsr
+!CONT_EV_qimsr
+b
+CNTqimisr
+CONT_EV_qimisr
+b
+CNTalleffr
+CONT_EV_alleffr
+!s
+!CNTtech_atrisr
+!CONT_EV_tech_atrisr
+b
+CNTtotr
+CONT_EV_totr
+b
+CNTtech_avajr
+CONT_EV_tech_avajr
+!s
+!CNTtech_afjr
+!CONT_EV_tech_afjr
+b
+CNTtech_aoir
+CONT_EV_tech_aoir
+!s
+!CNTtech_afejr
+!CONT_EV_tech_afejr
+b
+CNTtech_afeijr
+CONT_EV_tech_afeijr
+!s
+!CNTtech_atrir
+!CONT_EV_tech_atrir
+!s
+!CNTtech_atrsr
+!CONT_EV_tech_atrsr
+b
+CNTtech_afmfdsd
+CONT_EV_tech_afmfdsd
+b
+CNTtech_afijr
+CONT_EV_tech_afijr
+!s
+!CNTtech_afir
+!CONT_EV_tech_afir
+b
+CNTtech_amsirs
+CONT_EV_tech_amsirs
+! End of backsolves and substitutions associated with welfare decomposition
+e           ! exit condensation
+a           ! automatic code generation
+! pgs       ! prepare for GEMSIM
+wfp      	! write TABLO-generated program
+
+GTAP       ! Name of program
+!________________________________end of file_____________________
+
+

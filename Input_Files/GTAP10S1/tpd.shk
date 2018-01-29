@@ -1,0 +1,103 @@
+ 
+ ! This file was created at 19:14:03 on 25-JUN-2017 by the program
+ !  <SHOCKSv7.for 25-JUN-2017> [SHOCKSv7.tab,SHOCKSv7.STI]
+ ! which accesses some of the routines in the GEMPACK software release
+ !  <GEMPACK Release 11.4.003   January 2016>
+ 
+ !     -------------------------------------------------------                
+ !    !            GEMPACK Software System Licence            !               
+ !    !  Source Code Licence for the GEMPACK Software System  !               
+ !    !                 Licence No.  GFM-0048                 !               
+ !    !          Licence for Release 11.4 of GEMPACK          !               
+ !    !           Center for Global Trade Analysis            !               
+ !    !         Department of Agricultural Economics          !               
+ !    !                   Krannert Building                   !               
+ !    !                   Purdue University                   !               
+ !    !                    West Lafayette,                    !               
+ !    !                   Indiana IN 47907                    !               
+ !    !                          USA                          !               
+ !     -------------------------------------------------------                
+    
+ 
+ !
+ ! Values of TPD_HAT(COMM,REG) - an array of size 10x10
+ !----------------------------
+ !
+ 
+ ! (Entries are written one "row" at a time - maximum of 4 per line.)
+ 
+ 
+ 10 10  real row_order;
+ 
+ ! The matrix TPD_HAT(%1,%2) with %1 in COMM and %2 in REG. ++++++++++++++++++
+ 
+ !%2= Oceania        EastAsia        SEAsia          SouthAsia
+  -4.5753422      -2.0591884      -1.2731056       3.3547509     !%1=c_Crops
+ !%2= NAmerica       LatinAmer       EU_28           MENA
+  -3.6536820      -7.7681351      -1.6456280      -1.2422118
+ !%2= SSA            RestofWorld
+ -0.36778584      -3.1968572
+ 
+ !%2= Oceania        EastAsia        SEAsia          SouthAsia
+  -4.1103039      -2.4200470      -1.5906482     -0.32683727     !%1=c_MeatLstk
+ !%2= NAmerica       LatinAmer       EU_28           MENA
+  -2.4599066      -6.8874640      -10.416718      -2.7922828
+ !%2= SSA            RestofWorld
+  -2.1046214      -15.989383
+ 
+ !%2= Oceania        EastAsia        SEAsia          SouthAsia
+  -8.2411585      -2.5981805      -2.1797137      0.56605065     !%1=c_Extract..
+ !%2= NAmerica       LatinAmer       EU_28           MENA
+  -3.5156164      -2.5519252      -12.340522      -3.6776001
+ !%2= SSA            RestofWorld
+  -3.1337113      -5.4680429
+ 
+ !%2= Oceania        EastAsia        SEAsia          SouthAsia
+  -23.273689      -8.9371872      -11.769550      -4.1502953     !%1=c_ProcFood
+ !%2= NAmerica       LatinAmer       EU_28           MENA
+  -12.707623      -14.683850      -15.352833      -8.5464602
+ !%2= SSA            RestofWorld
+  -9.0146418      -19.307262
+ 
+ !%2= Oceania        EastAsia        SEAsia          SouthAsia
+  -25.243378      -4.8110723      -2.2881985      -1.7095534     !%1=c_TextWapp
+ !%2= NAmerica       LatinAmer       EU_28           MENA
+  -10.158921      -9.5732737      -13.611300      -9.0053148
+ !%2= SSA            RestofWorld
+  -5.1326871      -6.9761500
+ 
+ !%2= Oceania        EastAsia        SEAsia          SouthAsia
+  -13.137147      -6.3988509      -5.4055653      -2.8692596     !%1=c_LightMnfc
+ !%2= NAmerica       LatinAmer       EU_28           MENA
+  -7.1662607      -12.692460      -13.991841      -6.2130470
+ !%2= SSA            RestofWorld
+  -4.0338554      -15.921195
+ 
+ !%2= Oceania        EastAsia        SEAsia          SouthAsia
+  -31.593061      -16.540697      -5.0304623      -19.964699     !%1=c_HeavyMnfc
+ !%2= NAmerica       LatinAmer       EU_28           MENA
+  -12.443755      -21.837610      -31.326359      -8.2513237
+ !%2= SSA            RestofWorld
+  -10.923598      -21.128839
+ 
+ !%2= Oceania        EastAsia        SEAsia          SouthAsia
+  -5.0489731      -6.9331651      -4.9135222       9.4874268     !%1=c_Util_Cons
+ !%2= NAmerica       LatinAmer       EU_28           MENA
+  -3.0403905      -15.520349      -28.901527      -3.2522554
+ !%2= SSA            RestofWorld
+  -2.3278358      -4.7462845
+ 
+ !%2= Oceania        EastAsia        SEAsia          SouthAsia
+  -5.0488548      -7.6154261      -4.4709220      0.18080321     !%1=c_TransComm
+ !%2= NAmerica       LatinAmer       EU_28           MENA
+  -1.2848397      -5.2805109      -2.0391042      -3.2866883
+ !%2= SSA            RestofWorld
+  -1.5846792      -2.4148822
+ 
+ !%2= Oceania        EastAsia        SEAsia          SouthAsia
+  -4.1684504      -3.3109453      -3.3805711     -0.84120470     !%1=c_OthServ..
+ !%2= NAmerica       LatinAmer       EU_28           MENA
+ -0.77277595      -3.1485188      -9.2417212      -2.3972037
+ !%2= SSA            RestofWorld
+  -3.3107224      0.21057868
+ 

@@ -1,0 +1,754 @@
+ 
+ ! This file was created at 19:14:03 on 25-JUN-2017 by the program
+ !  <SHOCKSv7.for 25-JUN-2017> [SHOCKSv7.tab,SHOCKSv7.STI]
+ ! which accesses some of the routines in the GEMPACK software release
+ !  <GEMPACK Release 11.4.003   January 2016>
+ 
+ !     -------------------------------------------------------                
+ !    !            GEMPACK Software System Licence            !               
+ !    !  Source Code Licence for the GEMPACK Software System  !               
+ !    !                 Licence No.  GFM-0048                 !               
+ !    !          Licence for Release 11.4 of GEMPACK          !               
+ !    !           Center for Global Trade Analysis            !               
+ !    !         Department of Agricultural Economics          !               
+ !    !                   Krannert Building                   !               
+ !    !                   Purdue University                   !               
+ !    !                    West Lafayette,                    !               
+ !    !                   Indiana IN 47907                    !               
+ !    !                          USA                          !               
+ !     -------------------------------------------------------                
+    
+ 
+ !
+ ! Values of TFD_HAT(COMM,ACTS,REG) - an array of size 10x10x10
+ !---------------------------------
+ !
+ 
+ ! (Entries are written one "row" at a time - maximum of 4 per line.)
+ 
+ 
+ 10 10 10  real row_order;
+ 
+ ! (This array is shown as 10 matrices - each of size 10x10.)
+ 
+ ! The matrix TFD_HAT(%1,%2,"Oceania") with %1 in COMM and %2 in ACTS. +++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.95849460      0.55488175       0.0000000       0.0000000     !%1=c_Crops
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000     -1.19209271E-05   0.0000000      5.96046493E-06
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.96445477      7.13141337E-02 -1.19209271E-05 -1.19209271E-05 !%1=c_MeatLstk
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.0601877      0.19501257     -3.48079018E-03 -0.16097103     !%1=c_Extract..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.4345127     -0.13422807     -0.17711684     -0.60921615
+ !%2= a_TransComm    a_OthService
+ -0.23861080     -0.24195637
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.0313958      0.48539865      1.19209308E-05   0.0000000     !%1=c_ProcFood
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -1.19209271E-05   0.0000000     -1.19209271E-05  1.19209308E-05
+ !%2= a_TransComm    a_OthService
+ -1.19209271E-05   0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.0388615      0.35840115     -1.19209271E-05   0.0000000     !%1=c_TextWapp
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -1.19209271E-05   0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+ -1.19209271E-05   0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.78844297      0.24800260       0.0000000       0.0000000     !%1=c_LightMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -4.0861835      -2.0455902      -3.1788239     -0.50518304     !%1=c_HeavyMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -2.6951761     -0.17516869      -1.1254241      -1.5461117
+ !%2= a_TransComm    a_OthService
+  -7.1488538     -0.84670162
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.73893887      0.25081202     -4.70854528E-03 -0.31387919     !%1=c_Util_Cons
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -6.34863004E-02 -0.10154654     -2.93049738E-02  8.88117123E-04
+ !%2= a_TransComm    a_OthService
+ -6.00778731E-03 -4.21983097E-03
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.94882369      0.36250156       0.0000000       0.0000000     !%1=c_TransComm
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.74033010      0.33813223     -1.19209271E-05   0.0000000     !%1=c_OthServ..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  5.96046493E-06   0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFD_HAT(%1,%2,"EastAsia") with %1 in COMM and %2 in ACTS. ++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.68742269       1.5488712       0.0000000       0.0000000     !%1=c_Crops
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000      1.19209308E-05   0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.6305444      0.25851029       0.0000000       0.0000000     !%1=c_MeatLstk
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -4.2033391      -3.0673919     -8.49240422E-02 -0.22244927     !%1=c_Extract..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -8.0714397     -0.42891517     -0.61146533      -8.1593533
+ !%2= a_TransComm    a_OthService
+ -0.28130332      -3.4598415
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.99030262       1.4161323       0.0000000       0.0000000     !%1=c_ProcFood
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000     -1.19209271E-05   0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.8942726      0.34289113       0.0000000       0.0000000     !%1=c_TextWapp
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  1.19209308E-05 -1.19209271E-05   0.0000000      5.96046493E-06
+ !%2= a_TransComm    a_OthService
+   0.0000000     -1.19209271E-05
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.2578273      0.48329827       0.0000000      5.96046493E-06 !%1=c_LightMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.89091289      -2.2857285      -1.4644067      -1.4068834     !%1=c_HeavyMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.19969322     -0.18336467     -0.71034068     -0.42484930
+ !%2= a_TransComm    a_OthService
+  -9.1004963      -1.1953460
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -3.7925446      -3.6296411      -3.8139014      -3.8279393     !%1=c_Util_Cons
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -3.3843434      -3.5068264      -3.9191458      -1.6727318
+ !%2= a_TransComm    a_OthService
+  -3.0859034      -2.1488254
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.0262003      0.81147474       0.0000000      5.96046493E-06 !%1=c_TransComm
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000      5.96046493E-06
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.0689179      0.96401125       0.0000000       0.0000000     !%1=c_OthServ..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000      1.19209308E-05 -1.19209271E-05
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFD_HAT(%1,%2,"SEAsia") with %1 in COMM and %2 in ACTS. ++++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.7198355      0.11012150       0.0000000       0.0000000     !%1=c_Crops
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000     -1.19209271E-05   0.0000000      5.96046493E-06
+ !%2= a_TransComm    a_OthService
+ -1.19209271E-05   0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   3.4354148      4.87589790E-03   0.0000000       0.0000000     !%1=c_MeatLstk
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.19035743     -8.65384564E-03 -2.06227810E-03 -3.26622790E-03 !%1=c_Extract..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -6.12698216E-03 -8.68960191E-03 -7.93899149E-02 -0.21682355
+ !%2= a_TransComm    a_OthService
+ -0.10236741     -0.11489289
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   9.2410965      0.13381840       0.0000000       0.0000000     !%1=c_ProcFood
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000      5.96046493E-06   0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   2.8855097      2.73592793E-03   0.0000000       0.0000000     !%1=c_TextWapp
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.0979565      8.40432534E-04   0.0000000     -1.19209271E-05 !%1=c_LightMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000     -1.19209271E-05   0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.9972652      -1.4638628      -1.9693867      -1.1984648     !%1=c_HeavyMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.15179683     -1.61383338E-02 -0.46054426     -1.82595290E-02
+ !%2= a_TransComm    a_OthService
+  -1.7748333     -0.42092496
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -5.94500713E-02  -1.6167899     -0.58253604      -1.4543939     !%1=c_Util_Cons
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.64867401     -0.92857963      -1.0565120      -1.0118878
+ !%2= a_TransComm    a_OthService
+  -1.2102633     -0.73719889
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   3.1391914      6.60318732E-02   0.0000000      5.96046493E-06 !%1=c_TransComm
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   3.9767029      1.40269399E-02  5.96046493E-06   0.0000000     !%1=c_OthServ..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFD_HAT(%1,%2,"SouthAsia") with %1 in COMM and %2 in ACTS. +++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000       0.0000000       0.0000000     !%1=c_Crops
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  1.19209308E-05   0.0000000       0.0000000     -1.19209271E-05
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000       0.0000000     -1.19209271E-05 !%1=c_MeatLstk
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+  5.96046493E-06   0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -3.69547430E-04 -7.17125311E-02 -4.89352979E-02 -8.81371275E-02 !%1=c_Extract..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -6.9356122     -0.39368242     -0.72062278      -2.9869256
+ !%2= a_TransComm    a_OthService
+  -1.6074544      -2.9167199
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  5.96046493E-06   0.0000000       0.0000000       0.0000000     !%1=c_ProcFood
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000       0.0000000       0.0000000     !%1=c_TextWapp
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000     -1.19209271E-05   0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000      1.19209308E-05   0.0000000       0.0000000     !%1=c_LightMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000     -2.38418525E-05
+ !%2= a_TransComm    a_OthService
+  5.96046493E-06   0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -4.7914100     -0.46559930      -9.6792917     -0.23369883     !%1=c_HeavyMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.5903480     -0.48717180      -3.1844447      -1.0956039
+ !%2= a_TransComm    a_OthService
+  -13.703113      -1.7407886
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   8.5457897       3.9314797       3.5773196       3.4768183     !%1=c_Util_Cons
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   4.1419368       6.8923082       6.3504477       1.4538119
+ !%2= a_TransComm    a_OthService
+   5.4786983       3.0588179
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000       0.0000000       0.0000000     !%1=c_TransComm
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   0.0000000       0.0000000       0.0000000       0.0000000     !%1=c_OthServ..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFD_HAT(%1,%2,"NAmerica") with %1 in COMM and %2 in ACTS. ++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   6.4433193       3.6815019       0.0000000     -1.19209271E-05 !%1=c_Crops
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  5.96046493E-06   0.0000000       0.0000000     -1.19209271E-05
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   2.5072622      0.13638833     -1.19209271E-05   0.0000000     !%1=c_MeatLstk
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   4.1434689     -0.30652216     -0.43666774     -2.14173216E-02 !%1=c_Extract..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -2.93246261E-03 -5.00666648E-02 -2.90547814E-02 -2.01542284E-02
+ !%2= a_TransComm    a_OthService
+ -0.88831329      -1.1028100
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.7864546       3.3665123       0.0000000       0.0000000     !%1=c_ProcFood
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  5.96046493E-06   0.0000000      5.96046493E-06   0.0000000
+ !%2= a_TransComm    a_OthService
+ -1.19209271E-05   0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   5.0523734       3.0412848       0.0000000       0.0000000     !%1=c_TextWapp
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  1.19209308E-05 -1.19209271E-05   0.0000000     -1.19209271E-05
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   5.0347939      0.55190462       0.0000000      5.96046493E-06 !%1=c_LightMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000     -1.19209271E-05   0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -1.1493326      -2.7118104      -1.6919409      -1.0046802     !%1=c_HeavyMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.20004942     -0.31804889      -1.0612733     -0.51674652
+ !%2= a_TransComm    a_OthService
+  -9.8856583     -0.52706873
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   2.4071755     -0.91068619      -2.5414870      -1.7708882     !%1=c_Util_Cons
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.6567088      -2.1955552      -2.3401961      -1.0630586
+ !%2= a_TransComm    a_OthService
+  -1.3475642     -0.87690639
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   5.0268378       1.8803196       0.0000000       0.0000000     !%1=c_TransComm
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000     -1.19209271E-05   0.0000000      5.96046493E-06
+ !%2= a_TransComm    a_OthService
+  1.19209308E-05   0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   4.9073524       1.9425465       0.0000000       0.0000000     !%1=c_OthServ..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000      1.19209308E-05   0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFD_HAT(%1,%2,"LatinAmer") with %1 in COMM and %2 in ACTS. +++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.98229706      0.80851871       0.0000000       0.0000000     !%1=c_Crops
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000     -1.19209271E-05   0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.83676547      0.10018242     -1.19209271E-05   0.0000000     !%1=c_MeatLstk
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   2.0760469       1.0342554     -0.15045384     -3.38320658E-02 !%1=c_Extract..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.4546949     -7.53311664E-02 -5.15671745E-02 -8.50668475E-02
+ !%2= a_TransComm    a_OthService
+ -0.75884169     -0.38969648
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   2.4167340       1.2861674       0.0000000       0.0000000     !%1=c_ProcFood
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.8990935      0.83939588       0.0000000       0.0000000     !%1=c_TextWapp
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000     -1.19209271E-05  5.96046493E-06
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.3046007      0.16933696       0.0000000       0.0000000     !%1=c_LightMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  1.19209308E-05   0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -9.68709067E-02  -1.5334225      -1.6993138     -0.30283731     !%1=c_HeavyMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.21772560     -0.19832776     -0.58274812      -1.3479702
+ !%2= a_TransComm    a_OthService
+  -6.6060309     -0.49412450
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -4.9430561      -5.1645403      -2.9149108      -5.8548474     !%1=c_Util_Cons
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -6.2672892      -5.7676511      -6.9431901      -1.6047653
+ !%2= a_TransComm    a_OthService
+  -4.1346865      -1.7917837
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.1563462      0.44529554       0.0000000       0.0000000     !%1=c_TransComm
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.82251292      0.29436317       0.0000000       0.0000000     !%1=c_OthServ..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+ -1.19209271E-05   0.0000000
+ 
+ ! The matrix TFD_HAT(%1,%2,"EU_28") with %1 in COMM and %2 in ACTS. +++++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   3.2348769       3.4785926     -1.19209271E-05   0.0000000     !%1=c_Crops
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000     -1.19209271E-05
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   4.5860424      0.11505594       0.0000000       0.0000000     !%1=c_MeatLstk
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -1.19209271E-05   0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   2.7815225      0.65206122     -7.23434314E-02 -0.14363134     !%1=c_Extract..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.36838934     -0.11699800     -0.24030735      0.26526895
+ !%2= a_TransComm    a_OthService
+ -9.68233123E-02 -0.62674767
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   5.5952420       2.1419332       0.0000000       0.0000000     !%1=c_ProcFood
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   5.9479098       2.0273299     -1.19209271E-05   0.0000000     !%1=c_TextWapp
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   4.8784051      0.87860727       0.0000000       0.0000000     !%1=c_LightMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  5.96046493E-06   0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -9.8795986      -9.3630247      -10.071170      -3.3358915     !%1=c_HeavyMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.0946944     -0.47459784      -3.3675711      -2.1759379
+ !%2= a_TransComm    a_OthService
+  -24.453865      -2.7295442
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -2.7449377      -8.5166082      -6.0905094      -9.9747953     !%1=c_Util_Cons
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -9.6923122      -11.021078      -12.494993     -0.57262605
+ !%2= a_TransComm    a_OthService
+  -6.9277959      -3.9386644
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   3.9239409      0.82932359       0.0000000       0.0000000     !%1=c_TransComm
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+ -1.19209271E-05   0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   3.6573834       1.2667261       0.0000000       0.0000000     !%1=c_OthServ..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000      5.96046493E-06   0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ ! The matrix TFD_HAT(%1,%2,"MENA") with %1 in COMM and %2 in ACTS. ++++++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.20284589      0.17166947       0.0000000       0.0000000     !%1=c_Crops
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  1.84927806E-02  1.92321558E-02 -1.19209271E-05   0.0000000     !%1=c_MeatLstk
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.18969929     -0.24199197     -2.54685376E-02 -0.20947592     !%1=c_Extract..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.74006480     -8.34602341E-02 -6.03162637E-03 -0.64950949
+ !%2= a_TransComm    a_OthService
+  0.90398026     -0.13686733
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.28523871      0.31317493       0.0000000       0.0000000     !%1=c_ProcFood
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000      5.96046493E-06   0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000      5.96046493E-06
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.19213447      7.74920406E-03   0.0000000       0.0000000     !%1=c_TextWapp
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.57055384      7.87221715E-02   0.0000000       0.0000000     !%1=c_LightMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -14.844463      -13.899829     -0.51988471      -1.9676338     !%1=c_HeavyMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -4.85184714E-02 -0.43699864      -1.2516168     -6.47125840E-02
+ !%2= a_TransComm    a_OthService
+  -11.378201      -1.4063851
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -3.2868333      -3.6896653      -2.0789440      -5.7371759     !%1=c_Util_Cons
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -10.389349      -4.9098248      -5.0061355     -0.36304042
+ !%2= a_TransComm    a_OthService
+  -2.6436689      -2.2998860
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.30789709      6.56976476E-02   0.0000000       0.0000000     !%1=c_TransComm
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000      1.19209308E-05
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.35793290      0.40402269       0.0000000       0.0000000     !%1=c_OthServ..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000     -1.19209271E-05
+ !%2= a_TransComm    a_OthService
+   0.0000000     -1.19209271E-05
+ 
+ ! The matrix TFD_HAT(%1,%2,"SSA") with %1 in COMM and %2 in ACTS. +++++++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  5.32893930E-03  0.11091003       0.0000000     -1.19209271E-05 !%1=c_Crops
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  1.70200225E-02  1.81290582E-02   0.0000000       0.0000000     !%1=c_MeatLstk
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000     -1.19209271E-05   0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  1.55174965E-02  1.75836799E-03  4.94720996E-04  4.23194782E-04 !%1=c_Extract..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -6.95340782E-02 -7.19972281E-03 -3.10562924E-02 -3.76678631E-02
+ !%2= a_TransComm    a_OthService
+  1.60242952E-02  7.86087438E-02
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  6.98019098E-03  0.68230480       0.0000000       0.0000000     !%1=c_ProcFood
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  1.19209308E-05   0.0000000       0.0000000     -1.19209271E-05
+ !%2= a_TransComm    a_OthService
+  1.19209308E-05   0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.38914129      0.74865431     -2.38418525E-05   0.0000000     !%1=c_TextWapp
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000     -1.19209271E-05   0.0000000      5.96046493E-06
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.23679645      0.33771217     -7.15255228E-05   0.0000000     !%1=c_LightMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -2.1075118      -3.0893629      -1.3826588     -0.38915238     !%1=c_HeavyMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -0.25630891     -0.12175500     -0.46220964      -1.9202387
+ !%2= a_TransComm    a_OthService
+  -7.6829658      -1.0010350
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+ -0.36006984     -0.56634432     -0.64819157     -0.80137175     !%1=c_Util_Cons
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -2.3050859      -1.9563136      -1.4169290     -0.16511787
+ !%2= a_TransComm    a_OthService
+ -0.56199503     -0.39711219
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.14053039      9.98479724E-02   0.0000000       0.0000000     !%1=c_TransComm
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.18256794      0.18436864       0.0000000       0.0000000     !%1=c_OthServ..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000      5.96046493E-06
+ !%2= a_TransComm    a_OthService
+  1.19209308E-05 -1.19209271E-05
+ 
+ ! The matrix TFD_HAT(%1,%2,"RestofWorld")
+ !  with %1 in COMM and %2 in ACTS. ++++++++++++++++++++++++++++++++++++++++++
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.6327853      0.91516006       0.0000000       0.0000000     !%1=c_Crops
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -1.19209271E-05   0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   1.5583071      0.15859085       0.0000000       0.0000000     !%1=c_MeatLstk
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  5.07671945E-02  0.65220010      -1.7096570     -0.15159479     !%1=c_Extract..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -2.81373933E-02 -0.30395108      -2.2276905      -20.395678
+ !%2= a_TransComm    a_OthService
+  -11.631210      -3.1693912
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  0.59665877       1.9461455     -1.19209271E-05   0.0000000     !%1=c_ProcFood
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000      1.19209308E-05
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   2.4142520      0.47233427       0.0000000       0.0000000     !%1=c_TextWapp
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000     -1.19209271E-05   0.0000000     -1.19209271E-05
+ !%2= a_TransComm    a_OthService
+  1.19209308E-05   0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   2.0577974      0.45794389       0.0000000     -1.19209271E-05 !%1=c_LightMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -4.3200669      -3.4607637      -1.4557483      -2.0171807     !%1=c_HeavyMnfc
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -1.3348935     -0.40421939      -1.3208380      -7.4269381
+ !%2= a_TransComm    a_OthService
+  -9.8023577      -1.1549352
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+  -1.7805378      -4.9435191      -2.8681688      -3.5965710     !%1=c_Util_Cons
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+  -4.6544423      -6.0174079      -5.4822092      -1.2409445
+ !%2= a_TransComm    a_OthService
+  -2.8267963      -2.2427304
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   3.6422009      0.42888093       0.0000000       0.0000000     !%1=c_TransComm
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+ -1.19209271E-05   0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000      5.96046493E-06
+ 
+ !%2= a_Crops        a_MeatLstk      a_Extraction    a_ProcFood
+   2.2985256      0.48703572       0.0000000     -1.19209271E-05 !%1=c_OthServ..
+ !%2= a_TextWapp     a_LightMnfc     a_HeavyMnfc     a_Util_Cons
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= a_TransComm    a_OthService
+   0.0000000       0.0000000
+ 
