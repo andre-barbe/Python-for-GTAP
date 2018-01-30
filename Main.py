@@ -36,7 +36,7 @@ os.chdir("Work_Files")
 CreateSTI(gtapversion, simulation_list).create()
 for simulation in simulation_list:
     #Create files
-    CreateCMF(gtapversion, solution_method).create()
+    CreateCMF(gtapversion, simulation, solution_method).create()
     CreateMAP(gtapversion, variables_to_export).create()
 
     # Run Simulations

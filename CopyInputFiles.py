@@ -19,13 +19,10 @@ class CopyInputFiles(object):
         if self.gtapversion == "GTAPv7":
             list_gtap_gemsim = [
                 "gtapv7.tab",
-                "gtapv7.gss",
-                "gtapv7.gst",
-                "gtapv7.min",
                 "gtapv7.axs",
                 "gtapv7.axt",
-                "gtapv7.exe",
-                "GTAPv7-10x10.cmf"
+                "gtapv7.exe"
+                #"GTAPv7-10x10.cmf"
             ]
             list_shocks_gemsim = [
                 "Shocks-10x10.har"
@@ -70,4 +67,4 @@ class CopyInputFiles(object):
 
         for file_name in list_of_files_to_copy:
             # copy files with file_name from Input_Files to Work_Files
-            shutil.copy('Input_Files\\GTAP2\\{0}'.format(file_name), 'Work_Files\\{0}'.format(file_name))
+            shutil.copy('Input_Files\\{1}\\{0}'.format(file_name,self.gtapversion), 'Work_Files\\{0}'.format(file_name))

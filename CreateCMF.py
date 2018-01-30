@@ -8,13 +8,21 @@ class CreateCMF(object):
     """Creates an CMF file for controlling gemsim when it runs the policy simulation (as opposed to the shock
     calculation)"""
 
-    __slots__ = ["project", "solution_method"]
+    __slots__ = ["project", "simulation", "solution_method"]
 
-    def __init__(self, project: str, solution_method: str) -> None:
+    def __init__(self, project: str, simulation: str, solution_method: str) -> None:
         self.project = project
         self.solution_method = solution_method
+        self.simulation = simulation
 
     def create(self) -> None:
+
+        # Create final file
+        with open("{0}{1}.cmf".format(self.project, self.simulation), "w+") as writer:  # Create the empty file
+            writer.writelines(CreateCMF(self.project, self.simulation,
+                                        self.solution_method).createlinelists())  # write the line list to the file
+
+    def createlinelists(self):
         # Create list of lines to be added to CMF file
 
         # Create lines for solution method
@@ -48,19 +56,37 @@ class CreateCMF(object):
             "log file = yes;  \n",
             "start with MMNZ = 200000000;\n",
             "!Equations file = gtapv7-eqns;\n",
-            "\n",
-            "! Input files: \n",
-            "File GTAPSETS = SETS.har; \n",
-            "File GTAPDATA = BASEDATA.har;\n",
-            "File GTAPPARM = Default.prm;\n",
-            "\n",
-            "! Updated files:\n",
-            "Updated File GTAPDATA = <CMF>.UPD;\n",
-            "! Output files:\n",
-            "File GTAPVOL = GTAPVOL-<CMF>.har; ! HAR file of volume changes\n",
-            "File WELVIEW = WELVIEW-<CMF>.har; ! HAR file of volume changes\n",
-            "File GTAPSUM = SUMMARY-<CMF>.har; ! Summary/Diagnostics file\n",
-            ""]
+            "\n"
+        ]
+        if self.project == "GTAP":
+            line_input_output_files = [
+                "! Input files: \n",
+                "File GTAPSETS = SETS.har; \n",
+                "File GTAPDATA = BASEDATA.har;\n",
+                "File GTAPPARM = Default.prm;\n",
+                "\n",
+                "! Updated files:\n",
+                "Updated File GTAPDATA = <CMF>.UPD;\n",
+                "! Output files:\n",
+                "File GTAPVOL = GTAPVOL-<CMF>.har; ! HAR file of volume changes\n",
+                "File WELVIEW = WELVIEW-<CMF>.har; ! HAR file of volume changes\n",
+                "File GTAPSUM = SUMMARY-<CMF>.har; ! Summary/Diagnostics file\n",
+                ""]
+
+        if self.project == "GTAPv7":
+            line_input_output_files = [
+                "! Input files: \n",
+                "File GTAPSETS = SETS-10x10.har; \n",
+                "File GTAPDATA = BASEDATA-10x10.har;\n",
+                "File GTAPPARM = Default-10x10.prm;\n",
+                "\n",
+                "! Updated files:\n",
+                "Updated File GTAPDATA = <CMF>.UPD;\n",
+                "! Output files:\n",
+                "File GTAPVOL = GTAPVOL-<CMF>.har; ! HAR file of volume changes\n",
+                "File WELVIEW = WELVIEW-<CMF>.har; ! HAR file of volume changes\n",
+                "File GTAPSUM = SUMMARY-<CMF>.har; ! Summary/Diagnostics file\n",
+                ""]
 
         line_list_exogendo = [
             "Exogenous\n",
@@ -169,19 +195,21 @@ class CreateCMF(object):
             "\n",
             "!---------------------\n",
             "! (F) Eliminate Tariff  \n",
-            "!---------------------\n",
-            # "Shock tms = file SHOCKS-10x10.har header \"CTMS\";",
-            "Shock pfactwld = uniform 10;\n"
+            "!---------------------\n"
         ]
+        if self.project == "GTAPv7":
+            line_list_shocks.append("Shock tms = file SHOCKS-10x10.har header \"CTMS\";\n")
+        if self.project == "GTAP":
+            line_list_shocks.append("Shock pfactwld = uniform 10;\n")
 
-        line_list_sets = []  # Combine line lists
+        line_list_sets = []
 
+        # Combine line lists
         line_list_total = line_list_header \
+                          + line_input_output_files \
                           + line_list_method \
                           + line_list_exogendo \
                           + line_list_shocks \
                           + line_list_sets
 
-        # Create final file
-        with open("{0}.cmf".format(self.project), "w+") as writer:  # Create the empty file
-            writer.writelines(line_list_total)  # write the line list to the file
+        return line_list_total
