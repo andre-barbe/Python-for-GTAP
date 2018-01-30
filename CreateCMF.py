@@ -183,5 +183,5 @@ class CreateCMF(object):
                           + line_list_sets
 
         # Create final file
-        with open("Work_Files\{0}.cmf".format(self.project), "w+") as writer:  # Create the empty file
+        with open("{0}.cmf".format(self.project), "w+") as writer:  # Create the empty file
             writer.writelines(line_list_total)  # write the line list to the file

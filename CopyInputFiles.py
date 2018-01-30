@@ -16,7 +16,7 @@ class CopyInputFiles(object):
 
     def create(self) -> None:
         # Define lists of files to copy.
-        if self.gtapversion == "v7":
+        if self.gtapversion == "GTAPv7":
             list_gtap_gemsim = [
                 "gtapv7.tab",
                 "gtapv7.gss",
@@ -38,7 +38,7 @@ class CopyInputFiles(object):
             list_shocks_data = [
             ]
 
-        if self.gtapversion == "v6.2":
+        if self.gtapversion == "GTAP":
             list_gtap_gemsim = [
                 "gtap.tab",
                 "gtap.gss",
