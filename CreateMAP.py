@@ -8,11 +8,11 @@ class CreateMAP(object):
     """Creates the MAP File for use in SLTOTH
     Map gives the list of variables to be exported from the sl4 to the csv results file"""
 
-    __slots__ = ["file","linelist"]
+    __slots__ = ["file", "linelist"]
 
     def __init__(self, file: str, linelist: list) -> None:
         self.file = file
-        self.linelist=linelist
+        self.linelist = linelist
 
     def create(self) -> None:
         # Create the contents to be written to the file

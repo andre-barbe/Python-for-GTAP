@@ -3,11 +3,10 @@ __project__ = "Python for GTAP"
 __created__ = "2018-1-25"
 __altered__ = "2018-1-25"
 
-
-#Define Control Variables
-#these variables control the options for the files below
-gtapversion="v7"
-solution_method="default_j"
+# Define Control Variables
+# these variables control the options for the files below
+gtapversion = "v7"
+solution_method = "default_j"
 variables_to_export = [
     "qxw\n",
     "qmw\n",
@@ -33,8 +32,7 @@ CopyInputFiles(gtapversion).create()
 CreateCMF("gtapv7", solution_method).create()
 os.chdir("Work_Files")
 CreateSTI("GTAPv7", ["-10x10"]).create()
-CreateMAP("GTAPv7",variables_to_export).create()
-
+CreateMAP("GTAPv7", variables_to_export).create()
 
 # Run Simulations
 # Change working directory to Work_Files so all output (and logs) will go there when gemsim or sltoht is called
