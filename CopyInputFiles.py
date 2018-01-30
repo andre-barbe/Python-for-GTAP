@@ -25,12 +25,12 @@ class CopyInputFiles(object):
                 #"GTAPv7-10x10.cmf"
             ]
             list_shocks_gemsim = [
-                "Shocks-10x10.har"
+                "Shocks.har"
             ]
             list_gtap_data = [
-                "basedata-10x10.har",
-                "sets-10x10.har",
-                "default-10x10.prm",
+                "basedata.har",
+                "sets.har",
+                "default.prm",
             ]
             list_shocks_data = [
             ]

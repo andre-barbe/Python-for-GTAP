@@ -58,7 +58,7 @@ class CreateCMF(object):
             "!Equations file = gtapv7-eqns;\n",
             "\n"
         ]
-        if self.project == "GTAP":
+        if self.project == "GTAPv7":
             line_input_output_files = [
                 "! Input files: \n",
                 "File GTAPSETS = SETS.har; \n",
@@ -73,20 +73,6 @@ class CreateCMF(object):
                 "File GTAPSUM = SUMMARY-<CMF>.har; ! Summary/Diagnostics file\n",
                 ""]
 
-        if self.project == "GTAPv7":
-            line_input_output_files = [
-                "! Input files: \n",
-                "File GTAPSETS = SETS-10x10.har; \n",
-                "File GTAPDATA = BASEDATA-10x10.har;\n",
-                "File GTAPPARM = Default-10x10.prm;\n",
-                "\n",
-                "! Updated files:\n",
-                "Updated File GTAPDATA = <CMF>.UPD;\n",
-                "! Output files:\n",
-                "File GTAPVOL = GTAPVOL-<CMF>.har; ! HAR file of volume changes\n",
-                "File WELVIEW = WELVIEW-<CMF>.har; ! HAR file of volume changes\n",
-                "File GTAPSUM = SUMMARY-<CMF>.har; ! Summary/Diagnostics file\n",
-                ""]
 
         line_list_exogendo = [
             "Exogenous\n",
@@ -119,7 +105,7 @@ class CreateCMF(object):
             "! (A) Nominal homogeneity\n",
             "!------------------------\n",
             "!Shock pfactwld = 0;\n",
-            "Shock pfactwld = 5;\n",
+            "!Shock pfactwld = 5;\n",
             "\n",
             "!--------------\n",
             "! (B) Endowment\n",
@@ -198,8 +184,8 @@ class CreateCMF(object):
             "!---------------------\n"
         ]
         if self.project == "GTAPv7":
-            line_list_shocks.append("Shock tms = file SHOCKS-10x10.har header \"CTMS\";\n")
-        if self.project == "GTAP":
+            #line_list_shocks.append("Shock tms = file SHOCKS-10x10.har header \"CTMS\";\n")
+        #if self.project == "GTAP":
             line_list_shocks.append("Shock pfactwld = uniform 10;\n")
 
         line_list_sets = []
